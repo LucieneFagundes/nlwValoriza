@@ -1,16 +1,16 @@
-const express = require("express");
+import express from "express";
+import { router } from "./routes";
+import "reflect-metadata";
+import "./database";
 
 const app = express();
+app.use(express.json());
 
-app.get('/test', (request, response) => {
-    return response.send('Olá NLW!');
-});
+app.get("/", (request, response) => {
+    response.send("Primeira Rota");
+})
 
-app.post('/test-post', (request, response) => {
-    return response.send('olá nlw - rota post')
-});
-
-
+app.use(router);
 
 
 //http://localhost:8090
